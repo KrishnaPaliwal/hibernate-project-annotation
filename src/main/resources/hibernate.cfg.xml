@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_database</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- Other Hibernate properties -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+       
+        <!-- Disable the second-level cache and query cache -->
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+        <property name="hibernate.cache.use_query_cache">false</property>
+                
+         <!-- Show SQL queries in the console (for development/debugging) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Auto-create/update the database schema (for development) -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- Mapping files -->                
+        <mapping class="com.example.simple.Product"/>
+        
+        <mapping class="com.example.ManyToMany.Student" />
+        <mapping class="com.example.ManyToMany.Class" />
+
+        <mapping class="com.example.EagerLoading.Employee"/>
+        <mapping class="com.example.EagerLoading.Address"/>
+        
+        <!-- Add more mapping classes here if you have additional entities -->
+    </session-factory>
+</hibernate-configuration>
